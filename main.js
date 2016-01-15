@@ -7,7 +7,7 @@ var q = require('q');
 
 var apiToken = process.env.SLACK_API_TOKEN;
 var githubApiToken = process.env.GITHUB_API_TOKEN;
-var channel = process.env.SLACK_CHANNEL || "#general";
+var channel = process.env.SLACK_CHANNEL || "#test-channel";
 var slackIcon = process.env.SLACK_ICON || "http://4.bp.blogspot.com/-9TT2oDIQ00k/TqVViEko4HI/AAAAAAAAADU/svUOHDxP6UM/s1600/T-rex-hates-push-ups.jpg";
 var slackUsername = process.env.SLACK_USERNAME || "Swolen-Arms-Bot";
 var messageTemplate = "@channel: We have %s open pull-requests that's %s pushups for everybody!";
