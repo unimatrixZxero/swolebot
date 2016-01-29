@@ -152,7 +152,9 @@ hours.forEach(function (hour) {
 	});
 });
 
-http.createServer(function (req, res) {
+server = http.createServer().listen(process.env.PORT || 5000)
+server.on('request', function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/plain'});
-	res.send('it is running\n');
-}).listen(process.env.PORT || 5000)
+	res.write('Reporting in at full hours:' + hours);
+	res.end('\n');
+});
