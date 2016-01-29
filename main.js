@@ -4,6 +4,7 @@ var GitHubApi = require("github");
 var CronJob = require('cron').CronJob;
 var format = require('util').format;
 var q = require('q');
+var http = require('http');
 
 var apiToken = process.env.SLACK_API_TOKEN;
 var githubApiToken = process.env.GITHUB_API_TOKEN;
@@ -36,6 +37,7 @@ github.authenticate({
 });
 
 function postMessage(message, callback) {
+	console.log(message)
 	return q.ninvoke(slack, 'api', "chat.postMessage", {
 		channel: channel,
 		text: message,
@@ -149,3 +151,8 @@ hours.forEach(function (hour) {
 		timeZone: timezone
 	});
 });
+
+http.createServer(function (req, res) {
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.send('it is running\n');
+}).listen(process.env.PORT || 5000)
